@@ -4,7 +4,9 @@ import { useState } from "react";
 import {
   Recycle, Leaf, Factory, Smartphone, BarChart3, Globe2, Coins,
   ArrowRight, Building2, Truck, Cpu, ScanLine, Wallet, Target, MapPin,
-  ChevronRight, Sparkles,
+  ChevronRight, Sparkles, Database, Layers, Server, Network, Settings, Shield,
+  Home, UtensilsCrossed, GraduationCap, Hotel, Users, Gavel, Flame, Package,
+  CircleDollarSign, FileCheck, Gauge, Trash2, Mountain, TrendingUp,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -36,9 +38,11 @@ const sections = [
   { id: "perfil", label: "Perfil" },
   { id: "ventajas", label: "Ventajas" },
   { id: "tecnologia", label: "Tecnología" },
+  { id: "arquitectura", label: "Arquitectura" },
   { id: "app", label: "App" },
   { id: "expansion", label: "Expansión" },
   { id: "carbono", label: "Carbono" },
+  { id: "datos", label: "Datos" },
   { id: "vision", label: "Visión" },
 ];
 
@@ -50,6 +54,7 @@ function Index() {
       <Profile />
       <Advantages />
       <Technology />
+      <Architecture />
       <AppSection />
       <Expansion />
       <Carbon />
@@ -210,44 +215,126 @@ function Profile() {
 }
 
 function Advantages() {
-  const data = [
-    { i: BarChart3, t: "Recolección de datos", d: "Electrodomésticos, tipos de metal y agregación por niveles." },
-    { i: Leaf, t: "Consumo y reutilización", d: "Hogar, sector público, reciclaje y reutilización." },
-    { i: Globe2, t: "Datos de carbono", d: "Recopilación y análisis continuo de emisiones." },
+  const dataPillars = [
+    {
+      i: Database,
+      t: "Recolección de datos",
+      items: [
+        "Datos actualizados sobre electrodomésticos",
+        "Datos sobre los tipos de metales",
+        "Análisis de agregación por niveles de datos",
+      ],
+    },
+    {
+      i: Leaf,
+      t: "Consumo y reutilización",
+      items: [
+        "Consumo de los hogares",
+        "Consumo público",
+        "Datos sobre reciclaje y reutilización",
+        "Datos de consumo",
+      ],
+    },
+    {
+      i: Globe2,
+      t: "Emisiones de carbono",
+      items: [
+        "Datos sobre las emisiones de «carbono»",
+        "Recopilación continua de fuentes urbanas",
+        "Análisis de huella por sector",
+      ],
+    },
   ];
   const goals = [
-    { v: "−5%", l: "Tratamiento de residuos del gobierno" },
-    { v: "−55%", l: "Contaminación de agua y suelo" },
+    { v: "−5%", l: "Tratamiento de residuos por parte del gobierno" },
+    { v: "−55%", l: "Tasa de contaminación de agua y suelo" },
     { v: "+50", l: "Empleos directos generados" },
-    { v: "+100", l: "Aportes fiscales por operación" },
+    { v: "100+", l: "Aportes fiscales por operación" },
+    { v: "+", l: "Datos ambientales abiertos a la ciudad" },
+    { v: "↑", l: "Ingresos fiscales y presupuestarios" },
+  ];
+  const scope = [
+    { i: Home, t: "Residentes" },
+    { i: Hotel, t: "Hoteles" },
+    { i: Factory, t: "Fábricas" },
+    { i: GraduationCap, t: "Educación urbana" },
+    { i: Gavel, t: "Organismos gubernamentales" },
+    { i: UtensilsCrossed, t: "Gastronomía" },
+  ];
+  const standards = [
+    { i: Shield, t: "Normas de gestión", d: "Protocolos unificados de clasificación y trazabilidad." },
+    { i: CircleDollarSign, t: "Impuesto futuro de actividad", d: "STA habilita el modelo fiscal de actividad de los residentes." },
+    { i: Gavel, t: "Supervisión gubernamental", d: "Dashboards de control para autoridades locales." },
+    { i: Settings, t: "Administración de software", d: "Gestión centralizada de operaciones y agentes." },
   ];
   return (
     <section id="ventajas" className="py-28 px-6 bg-secondary/30">
       <div className="max-w-7xl mx-auto">
         <SectionHeader
           kicker="Ventajas operativas"
-          title="Diseñado para gobernar los residuos urbanos."
-          desc="Un sistema de datos que conecta hogares, sector público, gastronomía y administración pública en una sola capa."
+          title="Conceptos de diseño para el reciclaje y tratamiento urbano."
+          desc="STA combina recolección granular de datos, análisis de consumo y trazabilidad de carbono para gobernar todo el ciclo de residuos urbanos."
         />
-        <div className="grid lg:grid-cols-3 gap-6 mb-10">
-          {data.map((d) => (
+        <div className="grid lg:grid-cols-3 gap-6 mb-12">
+          {dataPillars.map((d) => (
             <Card key={d.t} className="bg-card-gradient border-border p-8">
               <d.i className="w-7 h-7 text-accent mb-5" />
-              <h3 className="text-xl font-semibold mb-2">{d.t}</h3>
-              <p className="text-sm text-muted-foreground">{d.d}</p>
+              <h3 className="text-xl font-semibold mb-4">{d.t}</h3>
+              <ul className="space-y-2">
+                {d.items.map((it) => (
+                  <li key={it} className="text-sm text-muted-foreground flex gap-2">
+                    <span className="text-primary mt-1.5 w-1 h-1 rounded-full bg-primary shrink-0" />
+                    {it}
+                  </li>
+                ))}
+              </ul>
             </Card>
           ))}
         </div>
-        <Card className="bg-gradient-primary text-primary-foreground p-10 border-0">
-          <div className="grid md:grid-cols-4 gap-8">
+
+        <Card className="bg-gradient-primary text-primary-foreground p-10 border-0 mb-12">
+          <div className="text-xs uppercase tracking-wider opacity-80 mb-6">Objetivo general</div>
+          <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-6">
             {goals.map((g) => (
               <div key={g.l}>
-                <div className="text-5xl font-bold">{g.v}</div>
-                <div className="text-sm mt-2 opacity-80">{g.l}</div>
+                <div className="text-4xl font-bold">{g.v}</div>
+                <div className="text-xs mt-2 opacity-90">{g.l}</div>
               </div>
             ))}
           </div>
         </Card>
+
+        <div className="grid lg:grid-cols-2 gap-6">
+          <Card className="bg-card-gradient border-border p-8">
+            <Badge className="w-fit bg-primary/10 text-primary border-primary/30 mb-4">Ámbito de aplicación</Badge>
+            <h3 className="text-2xl font-semibold mb-5">A quién sirve STA</h3>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              {scope.map((s) => (
+                <div key={s.t} className="flex items-center gap-3 p-3 rounded-lg bg-background/40">
+                  <s.i className="w-5 h-5 text-primary" />
+                  <span className="text-sm">{s.t}</span>
+                </div>
+              ))}
+            </div>
+          </Card>
+          <Card className="bg-card-gradient border-border p-8">
+            <Badge className="w-fit bg-accent/15 text-accent border-accent/30 mb-4">Marco regulatorio</Badge>
+            <h3 className="text-2xl font-semibold mb-5">Normas y gobernanza</h3>
+            <ul className="space-y-4">
+              {standards.map((s) => (
+                <li key={s.t} className="flex gap-4">
+                  <span className="w-9 h-9 rounded-lg bg-secondary text-primary grid place-items-center shrink-0">
+                    <s.i className="w-4 h-4" />
+                  </span>
+                  <div>
+                    <div className="font-medium text-sm">{s.t}</div>
+                    <div className="text-sm text-muted-foreground">{s.d}</div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </Card>
+        </div>
       </div>
     </section>
   );
@@ -255,10 +342,32 @@ function Advantages() {
 
 function Technology() {
   const steps = [
-    { i: Truck, t: "Recolección", d: "Recogida de todo tipo de desechos metálicos y electrónicos." },
-    { i: Factory, t: "Fundición", d: "Procesamiento a partir de biopellets como materia prima." },
-    { i: Recycle, t: "Producción", d: "Primera y tercera fase de fabricación de derivados." },
-    { i: Truck, t: "Carga y envío", d: "Logística hacia plantas socias y compradores globales." },
+    {
+      i: Truck, t: "Recolección",
+      d: "Recogida de todo tipo de desechos metálicos y electrónicos desde hogares, comercios y puntos de recolección.",
+    },
+    {
+      i: Flame, t: "Fundición con biopellets",
+      d: "Procesamiento térmico utilizando biopellets como materia prima, reduciendo emisiones del proceso.",
+    },
+    {
+      i: Factory, t: "Primera fase de producción",
+      d: "Transformación inicial: clasificación fina, prensado y conversión en lingotes o pellets reutilizables.",
+    },
+    {
+      i: Recycle, t: "Tercera fase de producción",
+      d: "Productos derivados del reciclaje y procesamiento de aluminio de desecho listos para industria.",
+    },
+    {
+      i: Package, t: "Carga y envío",
+      d: "Logística hacia plantas socias y compradores globales en Malasia, China y mercados europeos.",
+    },
+  ];
+  const outputs = [
+    "Aluminio reciclado en lingote",
+    "Componentes electrónicos clasificados",
+    "Metales no-aluminio derivados a socios",
+    "Datos certificados de carbono por lote",
   ];
   return (
     <section id="tecnologia" className="py-28 px-6">
@@ -266,13 +375,12 @@ function Technology() {
         <SectionHeader
           kicker="Tecnología de reciclaje"
           title="Del desecho urbano al aluminio listo para reuso."
-          desc="Un proceso lineal de cuatro fases convierte la chatarra urbana y los electrónicos en materia prima certificada."
+          desc="Cinco fases convierten la chatarra urbana y los electrónicos en materia prima certificada. Los metales no-aluminio se clasifican y se venden a plantas socias especializadas."
         />
-        <div className="grid lg:grid-cols-5 gap-6 items-stretch">
-          <Card className="lg:col-span-2 overflow-hidden border-border p-0 min-h-[320px]">
-            <img src={recyclingMetal} alt="Metales reciclados" width={1280} height={896} loading="lazy" className="w-full h-full object-cover" />
-          </Card>
-          <div className="lg:col-span-3 grid sm:grid-cols-2 gap-4">
+
+        <div className="relative">
+          <div className="hidden lg:block absolute top-12 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4 relative">
             {steps.map((s, i) => (
               <motion.div
                 key={s.t}
@@ -283,18 +391,145 @@ function Technology() {
                 transition={{ delay: i * 0.08 }}
               >
                 <Card className="bg-card-gradient border-border p-6 h-full hover:border-primary/40 transition">
-                  <div className="flex items-center gap-3 mb-3">
-                    <span className="w-9 h-9 rounded-lg bg-primary/15 text-primary grid place-items-center">
-                      <s.i className="w-4 h-4" />
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="w-10 h-10 rounded-xl bg-gradient-primary text-primary-foreground grid place-items-center shadow-glow">
+                      <s.i className="w-5 h-5" />
                     </span>
-                    <span className="text-xs text-muted-foreground">Fase {i + 1}</span>
+                    <span className="text-3xl font-bold text-muted-foreground/30">0{i + 1}</span>
                   </div>
-                  <h3 className="font-semibold mb-1">{s.t}</h3>
+                  <h3 className="font-semibold mb-2">{s.t}</h3>
                   <p className="text-sm text-muted-foreground">{s.d}</p>
                 </Card>
               </motion.div>
             ))}
           </div>
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-6 mt-12">
+          <Card className="overflow-hidden border-border p-0 min-h-[320px]">
+            <img src={recyclingMetal} alt="Metales reciclados" width={1280} height={896} loading="lazy" className="w-full h-full object-cover" />
+          </Card>
+          <Card className="bg-card-gradient border-border p-8 flex flex-col justify-center">
+            <Badge className="w-fit bg-accent/15 text-accent border-accent/30 mb-4">Productos derivados</Badge>
+            <h3 className="text-2xl font-semibold mb-5">Lo que sale de la planta</h3>
+            <ul className="space-y-3">
+              {outputs.map((o) => (
+                <li key={o} className="flex items-start gap-3 text-muted-foreground">
+                  <FileCheck className="w-5 h-5 text-primary mt-0.5 shrink-0" />
+                  <span>{o}</span>
+                </li>
+              ))}
+            </ul>
+          </Card>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Architecture() {
+  const layers = [
+    {
+      i: Network, t: "Capacidad de interfaz",
+      desc: "Servicios compartidos de datos e integración de interfaces.",
+      items: [
+        "Interfaz de consulta de datos",
+        "Servicio de intercambio de datos",
+        "Interfaz de programación (API)",
+        "Interfaz para compartir",
+        "Interfaz de aplicaciones temáticas",
+      ],
+    },
+    {
+      i: Layers, t: "Capacidad de aplicación",
+      desc: "Plataforma STA, monitoreo y gestión centralizada.",
+      items: [
+        "Monitoreo del estado operativo",
+        "Diseño de la plataforma STA",
+        "Manejo y disposición de módulos",
+        "Control de información de productos",
+        "Asignación de recursos STA",
+        "Recolección y procesamiento de datos",
+        "Control de emisiones de carbono",
+        "Gestión de emergencias STA",
+      ],
+    },
+    {
+      i: Settings, t: "Capacidad de soporte",
+      desc: "Plataformas de gestión, control y clasificación.",
+      items: [
+        "Plataforma de gestión y asignación",
+        "Plataforma de clasificación de basura",
+        "Sistema de control y envío de mensajes",
+        "Gestión por cuadrículas",
+        "Coordinación de emergencias",
+        "Sistema de monitoreo de operaciones",
+        "Cálculo de datos de «carbono»",
+      ],
+    },
+    {
+      i: Cpu, t: "Capacidad de recursos",
+      desc: "Middleware y componentes del sistema.",
+      items: [
+        "Middleware para sistemas GIS",
+        "Middleware para servidores de aplicaciones",
+        "Middleware de mensajería",
+        "Componentes de soporte de terceros",
+      ],
+    },
+    {
+      i: Server, t: "Hardware básico",
+      desc: "Infraestructura física y operativa.",
+      items: [
+        "Vehículos de recolección",
+        "Puntos de recolección",
+        "Empleados STA",
+        "Información regional",
+        "Servidores · almacenamiento · PCs · PADs · Internet",
+      ],
+    },
+  ];
+  return (
+    <section id="arquitectura" className="py-28 px-6 bg-secondary/30">
+      <div className="max-w-7xl mx-auto">
+        <SectionHeader
+          kicker="Parte 02 · Arquitectura"
+          title="Sistema de administración STA City."
+          desc="Cinco capas integradas que conectan hardware, middleware, plataformas operativas y APIs públicas. La arquitectura resuelve la integración de datos, reserva capacidad para sistemas futuros y construye una base de datos temática completa."
+        />
+        <div className="space-y-3">
+          {layers.map((l, i) => (
+            <motion.div
+              key={l.t}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+              variants={fadeUp}
+              transition={{ delay: i * 0.06 }}
+            >
+              <Card className="bg-card-gradient border-border p-6 lg:p-8 hover:border-primary/40 transition">
+                <div className="grid lg:grid-cols-12 gap-6 items-start">
+                  <div className="lg:col-span-3 flex lg:flex-col gap-4 items-start">
+                    <span className="w-12 h-12 rounded-xl bg-gradient-primary text-primary-foreground grid place-items-center shrink-0 shadow-glow">
+                      <l.i className="w-5 h-5" />
+                    </span>
+                    <div>
+                      <div className="text-xs text-primary uppercase tracking-wider mb-1">Capa 0{i + 1}</div>
+                      <h3 className="text-lg font-semibold">{l.t}</h3>
+                      <p className="text-sm text-muted-foreground mt-1">{l.desc}</p>
+                    </div>
+                  </div>
+                  <div className="lg:col-span-9 grid sm:grid-cols-2 lg:grid-cols-3 gap-2">
+                    {l.items.map((it) => (
+                      <div key={it} className="text-sm px-3 py-2 rounded-md bg-background/40 border border-border/50 text-muted-foreground">
+                        {it}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </Card>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
@@ -304,10 +539,34 @@ function Technology() {
 function AppSection() {
   const [step, setStep] = useState(0);
   const flow = [
-    { i: Smartphone, t: "Descargar y abrir", d: "El usuario instala la app STA City y selecciona el servicio." },
-    { i: ScanLine, t: "Escanear y vender", d: "Escanea chatarra o electrónicos: confirma cantidad y valor monetario." },
-    { i: Coins, t: "Puntos de carbono", d: "Obtén puntos «de carbono» por cada operación realizada." },
-    { i: Wallet, t: "Canjear por dinero", d: "Convierte los puntos acumulados en efectivo cuando quieras." },
+    {
+      i: Smartphone, t: "Descargar y abrir",
+      d: "El usuario descarga la app STA City desde su tienda de aplicaciones y la abre por primera vez.",
+    },
+    {
+      i: Settings, t: "Seleccionar servicio",
+      d: "El usuario elige el servicio: vender chatarra, vender electrónicos o consultar puntos.",
+    },
+    {
+      i: ScanLine, t: "Escanear código",
+      d: "Escanea el código de barras del producto para confirmar la cantidad que vende y su valor monetario.",
+    },
+    {
+      i: Truck, t: "Recogida a domicilio",
+      d: "Con un clic, STA recoge el producto a domicilio y realiza el pago automáticamente al usuario.",
+    },
+    {
+      i: Coins, t: "Acumular puntos «carbono»",
+      d: "Cada operación genera puntos de datos de «carbono» trazables, vinculados al material reciclado.",
+    },
+    {
+      i: Wallet, t: "Canjear por dinero",
+      d: "Los puntos acumulados se pueden canjear por dinero en efectivo cuando el usuario lo desee.",
+    },
+    {
+      i: Factory, t: "Clasificación en planta",
+      d: "Todos los residuos llegan a la planta STA: el aluminio se procesa internamente; otros metales se venden a plantas socias especializadas.",
+    },
   ];
   return (
     <section id="app" className="py-28 px-6 bg-secondary/30 relative overflow-hidden">
@@ -315,12 +574,19 @@ function AppSection() {
         <div className="lg:col-span-5 relative">
           <div className="absolute -inset-10 bg-gradient-primary opacity-20 blur-3xl rounded-full" />
           <img src={appPhone} alt="App STA City" width={1024} height={1280} loading="lazy" className="relative rounded-3xl shadow-elegant w-full max-w-sm mx-auto" />
+          <Card className="bg-card-gradient border-border p-5 mt-6 max-w-sm mx-auto">
+            <p className="text-sm text-muted-foreground">
+              STA ofrece, a través de su aplicación, <span className="text-foreground font-medium">servicios de datos
+              precisos sobre emisiones de carbono</span> de las ciudades, mejorando el reciclaje urbano y promoviendo
+              el ciclo ecológico.
+            </p>
+          </Card>
         </div>
         <div className="lg:col-span-7">
           <SectionHeader
             kicker="App STA City"
             title="Un clic. Tus residuos. Tu beneficio."
-            desc="Vende cualquier tipo de chatarra o electrónico desde casa, recibe pago y acumula puntos de carbono canjeables."
+            desc="«Click City»: vende cualquier tipo de chatarra o aparato electrónico desde casa, recibe pago y acumula puntos de carbono canjeables por dinero en efectivo."
           />
           <div className="space-y-2">
             {flow.map((s, i) => (
@@ -429,42 +695,90 @@ function Carbon() {
         <SectionHeader
           kicker="Centro de comercio de carbono"
           title="Del residuo certificado al activo negociable."
-          desc="STA convierte cada operación de reciclaje en datos auditables y certificados que las marcas pueden comprar como prueba de reducción de emisiones."
+          desc="STA selecciona una ciudad regional como centro de comercio de datos de carbono (CUT), convirtiendo cada operación de reciclaje en datos auditables que las marcas pueden adquirir como prueba de reducción de emisiones."
         />
         <Tabs defaultValue="modelo" className="w-full">
           <TabsList className="bg-card border border-border">
             <TabsTrigger value="modelo">Modelo EU ETS</TabsTrigger>
-            <TabsTrigger value="sta">Modelo STA</TabsTrigger>
+            <TabsTrigger value="sta">Modelo STA CUT</TabsTrigger>
+            <TabsTrigger value="reciclaje">Reciclaje de residuos</TabsTrigger>
           </TabsList>
           <TabsContent value="modelo" className="mt-6">
             <Card className="bg-card-gradient border-border p-8">
-              <h3 className="text-xl font-semibold mb-4">Marco actual europeo</h3>
+              <div className="flex items-center gap-3 mb-4">
+                <Badge className="bg-primary/10 text-primary border-primary/30">EU ETS</Badge>
+                <h3 className="text-xl font-semibold">Marco actual europeo</h3>
+              </div>
               <ul className="space-y-3 text-muted-foreground">
                 {[
-                  "La UE asigna cuotas de emisión de carbono a empresas.",
-                  "Las compañías reportan periódicamente sus emisiones.",
-                  "Excedentes de carbono pueden transferirse; déficits se compran.",
-                  "El reciclaje de materiales y compostaje cuentan como reducción.",
+                  "La Unión Europea lleva a cabo la asignación de cuotas de emisión de «carbono».",
+                  "Empresas y organizaciones participan en la compraventa de datos de «carbono».",
+                  "Las empresas reportan periódicamente sus datos de emisiones de «carbono».",
+                  "Determinados actos se consideran reducción de emisiones por parte de las empresas.",
+                  "Excedentes de datos de «carbono» pueden transferirse; déficits se pueden comprar.",
                 ].map((t) => (
-                  <li key={t} className="flex gap-3"><span className="text-primary mt-1">●</span>{t}</li>
+                  <li key={t} className="flex gap-3"><span className="text-primary mt-1.5 w-1.5 h-1.5 rounded-full bg-primary shrink-0" />{t}</li>
                 ))}
               </ul>
             </Card>
           </TabsContent>
           <TabsContent value="sta" className="mt-6">
-            <div className="grid md:grid-cols-3 gap-4">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
               {[
-                { t: "Clasificar por marca", d: "STA segmenta residuos urbanos por marca y material, generando datos trazables." },
-                { t: "Venta de datos certificados", d: "Los datos se venden a marcas que generan el mismo tipo de residuos." },
-                { t: "Prueba de reducción", d: "Las empresas usan los datos y videos como prueba de reducción de carbono." },
+                {
+                  t: "Clasificación por marca",
+                  d: "STA clasifica residuos urbanos por marca de material para generar datos trazables por origen.",
+                },
+                {
+                  t: "Documentación multimedia",
+                  d: "STA proporciona explicaciones con datos, videos e imágenes de cada tipo de material a lo largo de todo el proceso.",
+                },
+                {
+                  t: "Trazabilidad hasta producto final",
+                  d: "Documentación de cómo cada materia prima reciclada se reutiliza en nuevas materias primas o productos finales.",
+                },
+                {
+                  t: "Venta a marcas correspondientes",
+                  d: "STA vende los datos reciclados a empresas que generan el mismo tipo de residuo. Las marcas pueden firmar contratos directos para que CUT recicle sus desechos.",
+                },
+                {
+                  t: "Prueba de reducción CO₂",
+                  d: "Las empresas utilizan los datos, videos y materiales como prueba auditable de su reducción de emisiones de «carbono».",
+                },
+                {
+                  t: "Subasta de certificados",
+                  d: "Diferentes marcas pujan por la adquisición de datos CUT y los certificados de «carbono» correspondientes.",
+                },
               ].map((s, i) => (
-                <Card key={s.t} className="bg-card-gradient border-border p-6">
-                  <div className="text-xs text-primary mb-3">PASO 0{i + 1}</div>
+                <Card key={s.t} className="bg-card-gradient border-border p-6 hover:border-primary/40 transition">
+                  <div className="text-xs text-primary mb-3 font-medium">PASO 0{i + 1}</div>
                   <h3 className="font-semibold mb-2">{s.t}</h3>
                   <p className="text-sm text-muted-foreground">{s.d}</p>
                 </Card>
               ))}
             </div>
+          </TabsContent>
+          <TabsContent value="reciclaje" className="mt-6">
+            <Card className="bg-card-gradient border-border p-8">
+              <h3 className="text-xl font-semibold mb-4">Reciclaje de residuos como reducción certificada</h3>
+              <p className="text-muted-foreground mb-6">
+                Bajo el marco europeo, varias prácticas cuentan como reducción de emisiones para las empresas
+                participantes. STA integra todas en su plataforma:
+              </p>
+              <div className="grid md:grid-cols-3 gap-4">
+                {[
+                  { i: Recycle, t: "Reciclaje de materiales", d: "Recuperación de metales y electrónicos para reincorporar a la cadena productiva." },
+                  { i: Flame, t: "Recargo por energía", d: "Aprovechamiento energético de residuos no reutilizables como combustible alternativo." },
+                  { i: Leaf, t: "Compostaje orgánico", d: "Tratamiento biológico de residuos orgánicos urbanos para uso agrícola." },
+                ].map((r) => (
+                  <div key={r.t} className="p-5 rounded-lg bg-background/40 border border-border/50">
+                    <r.i className="w-6 h-6 text-accent mb-3" />
+                    <div className="font-medium mb-1">{r.t}</div>
+                    <p className="text-sm text-muted-foreground">{r.d}</p>
+                  </div>
+                ))}
+              </div>
+            </Card>
           </TabsContent>
         </Tabs>
       </div>
@@ -474,33 +788,59 @@ function Carbon() {
 
 function Goals() {
   const rows = [
-    { k: "Ciudades activas", a: "4 · 300 mil usuarios", b: "8 · 500 mil usuarios" },
-    { k: "Planta de procesamiento", a: "1 · 5M€ en 12 meses", b: "1 · 8M€+ en 24 meses" },
-    { k: "Capacidad anual", a: "3.600 t / año", b: "20.000+ t / año" },
-    { k: "Puntos de recolección", a: "3 · 100 t/mes", b: "6 · 300 t/mes" },
-    { k: "Agentes de la app", a: "6", b: "20" },
+    { k: "Ciudades en operación", i: Building2, a: { v: "4 ciudades", s: "300 mil usuarios" }, b: { v: "8 ciudades", s: "500 mil usuarios" } },
+    { k: "Planta de procesamiento", i: Factory, a: { v: "1 planta · 5M€", s: "Ciclo: 12 meses" }, b: { v: "1 planta · 8M€+", s: "Ciclo: 24 meses" } },
+    { k: "Capacidad de procesamiento", i: Gauge, a: { v: "3.600 t / año", s: "Operación piloto" }, b: { v: "20.000+ t / año", s: "Escala industrial" } },
+    { k: "Puntos de recolección", i: MapPin, a: { v: "3 puntos", s: "100 t / mes" }, b: { v: "6 puntos", s: "300 t / mes" } },
+    { k: "Agentes de la aplicación", i: Users, a: { v: "6 agentes", s: "" }, b: { v: "20 agentes", s: "" } },
   ];
   return (
-    <section className="py-28 px-6">
+    <section id="datos" className="py-28 px-6">
       <div className="max-w-7xl mx-auto">
         <SectionHeader
           kicker="Datos operativos"
           title="De piloto a operación industrial en dos etapas."
+          desc="Objetivos de datos operativos para el reciclaje electrónico de STA, organizados en una primera etapa de validación de mercado y una segunda etapa de escalamiento industrial."
         />
         <Card className="bg-card-gradient border-border overflow-hidden">
-          <div className="grid grid-cols-3 px-6 py-4 border-b border-border text-xs uppercase tracking-wider text-muted-foreground">
-            <div>Métrica</div>
-            <div>Primera etapa</div>
-            <div>Segunda etapa</div>
+          <div className="grid grid-cols-12 px-6 py-4 border-b border-border text-xs uppercase tracking-wider text-muted-foreground">
+            <div className="col-span-4">Métrica</div>
+            <div className="col-span-4">Primera etapa</div>
+            <div className="col-span-4">Segunda etapa</div>
           </div>
           {rows.map((r, i) => (
-            <div key={r.k} className={`grid grid-cols-3 px-6 py-5 items-center ${i < rows.length - 1 ? "border-b border-border" : ""}`}>
-              <div className="font-medium">{r.k}</div>
-              <div className="text-muted-foreground">{r.a}</div>
-              <div className="text-primary font-medium">{r.b}</div>
+            <div key={r.k} className={`grid grid-cols-12 px-6 py-5 items-center gap-2 ${i < rows.length - 1 ? "border-b border-border" : ""}`}>
+              <div className="col-span-4 flex items-center gap-3">
+                <span className="w-9 h-9 rounded-lg bg-secondary text-primary grid place-items-center shrink-0">
+                  <r.i className="w-4 h-4" />
+                </span>
+                <div className="font-medium text-sm">{r.k}</div>
+              </div>
+              <div className="col-span-4">
+                <div className="font-semibold">{r.a.v}</div>
+                {r.a.s && <div className="text-xs text-muted-foreground mt-0.5">{r.a.s}</div>}
+              </div>
+              <div className="col-span-4">
+                <div className="font-semibold text-primary">{r.b.v}</div>
+                {r.b.s && <div className="text-xs text-muted-foreground mt-0.5">{r.b.s}</div>}
+              </div>
             </div>
           ))}
         </Card>
+
+        <div className="mt-10 grid md:grid-cols-3 gap-4">
+          {[
+            { i: TrendingUp, t: "Crecimiento de usuarios", d: "De 300k a 500k usuarios activos entre etapas." },
+            { i: Mountain, t: "Capacidad multiplicada x5", d: "De 3.600 a más de 20.000 toneladas anuales procesadas." },
+            { i: Trash2, t: "Red de puntos duplicada", d: "De 3 a 6 puntos, escalando la recolección urbana." },
+          ].map((s) => (
+            <Card key={s.t} className="bg-card-gradient border-border p-6">
+              <s.i className="w-6 h-6 text-accent mb-3" />
+              <div className="font-semibold mb-1">{s.t}</div>
+              <p className="text-sm text-muted-foreground">{s.d}</p>
+            </Card>
+          ))}
+        </div>
       </div>
     </section>
   );
