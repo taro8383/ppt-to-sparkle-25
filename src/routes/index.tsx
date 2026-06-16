@@ -4,7 +4,9 @@ import { useState } from "react";
 import {
   Recycle, Leaf, Factory, Smartphone, BarChart3, Globe2, Coins,
   ArrowRight, Building2, Truck, Cpu, ScanLine, Wallet, Target, MapPin,
-  ChevronRight, Sparkles,
+  ChevronRight, Sparkles, Database, Layers, Server, Network, Settings, Shield,
+  Home, UtensilsCrossed, GraduationCap, Hotel, Users, Gavel, Flame, Package,
+  CircleDollarSign, FileCheck, Gauge, Trash2, Mountain, TrendingUp,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -36,9 +38,11 @@ const sections = [
   { id: "perfil", label: "Perfil" },
   { id: "ventajas", label: "Ventajas" },
   { id: "tecnologia", label: "Tecnología" },
+  { id: "arquitectura", label: "Arquitectura" },
   { id: "app", label: "App" },
   { id: "expansion", label: "Expansión" },
   { id: "carbono", label: "Carbono" },
+  { id: "datos", label: "Datos" },
   { id: "vision", label: "Visión" },
 ];
 
@@ -50,6 +54,7 @@ function Index() {
       <Profile />
       <Advantages />
       <Technology />
+      <Architecture />
       <AppSection />
       <Expansion />
       <Carbon />
