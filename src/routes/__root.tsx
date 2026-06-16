@@ -81,10 +81,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "description", content: "STA\\CUT integra reciclaje de metales, app ciudadana y comercio de carbono para construir el ecosistema urbano sostenible del futuro." },
       { name: "author", content: "STA" },
       { property: "og:title", content: "STA · Reciclaje Urbano Inteligente" },
-      { property: "og:description", content: "Ecosistema urbano para reciclaje de metales, datos de carbono y app ciudadana." },
+      { property: "og:description", content: "STA\\CUT integra reciclaje de metales, app ciudadana y comercio de carbono para construir el ecosistema urbano sostenible del futuro." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "STA · Reciclaje Urbano Inteligente" },
+      { name: "twitter:description", content: "STA\\CUT integra reciclaje de metales, app ciudadana y comercio de carbono para construir el ecosistema urbano sostenible del futuro." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/561db375-cf15-4b5c-b853-47f5956a9057/id-preview-921de4bc--f2a96c1d-3c00-4e4d-94e3-c6581e27ac92.lovable.app-1781626088562.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/561db375-cf15-4b5c-b853-47f5956a9057/id-preview-921de4bc--f2a96c1d-3c00-4e4d-94e3-c6581e27ac92.lovable.app-1781626088562.png" },
     ],
     links: [
       {
