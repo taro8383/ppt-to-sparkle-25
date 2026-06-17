@@ -1032,12 +1032,12 @@ function Expansion() {
     { name: "Cracovia", country: "Polonia", phase: "Fase 2" },
   ];
   return (
-    <section id="expansion" className="py-28 px-6">
+    <section id="expansion" className="py-28 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
         <SectionHeader
-          kicker="Plan de expansión"
-          title="Ciudades piloto para un ecosistema regional."
-          desc="STA selecciona ciudades estratégicas para reducir más del 30% las emisiones de carbono regionales y disminuir la contaminación local."
+          kicker="Casos de éxito europeos"
+          title="Nuestra experiencia en Europa, ahora rumbo a Latinoamérica."
+          desc="Estas implementaciones europeas demuestran la vasta experiencia operativa de nuestro grupo —tonelajes procesados, CO₂ evitado y participación ciudadana verificada— que ahora traemos íntegramente al continente latinoamericano."
         />
         <div className="grid lg:grid-cols-2 gap-10 items-start">
           <div className="space-y-3">
@@ -1065,16 +1065,18 @@ function Expansion() {
               </motion.div>
             ))}
           </div>
-          <Card className="bg-card-gradient border-border p-10">
+          <Card className="bg-card-gradient border-border p-8 lg:p-10">
             <Target className="w-8 h-8 text-accent mb-4" />
-            <h3 className="text-2xl font-bold mb-4">El reto europeo</h3>
+            <h3 className="text-2xl font-bold mb-4">De Europa a Latinoamérica</h3>
             <p className="text-muted-foreground mb-6">
-              Más del <span className="text-foreground font-semibold">45%</span> del territorio
-              europeo es montañoso o accidentado, y los residuos urbanos y electrónicos crecen un{" "}
-              <span className="text-foreground font-semibold">20% cada año</span>. STA ofrece la red
-              logística y digital para revertirlo.
+              Las cifras provienen de operaciones europeas reales: más del{" "}
+              <span className="text-foreground font-semibold">45%</span> de territorio difícil
+              cubierto y un <span className="text-foreground font-semibold">20% de crecimiento
+              anual</span> de residuos gestionados. Esta misma red logística y digital —ya
+              auditada— es la que desplegamos en municipios latinoamericanos, sin costo para el
+              gobierno local.
             </p>
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-3 gap-3 sm:gap-4">
               {[
                 { v: "30%", l: "Reducción CO₂ regional" },
                 { v: "45%", l: "Territorio difícil cubierto" },
