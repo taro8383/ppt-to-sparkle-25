@@ -1250,7 +1250,7 @@ function Goals() {
     },
   ];
   return (
-    <section id="datos" className="py-28 px-6">
+    <section id="datos" className="py-28 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
         <SectionHeader
           kicker="Datos operativos"
@@ -1258,7 +1258,7 @@ function Goals() {
           desc="Objetivos de datos operativos para el tratamiento integral de residuos de STA, organizados en una primera etapa de validación de mercado y una segunda etapa de escalamiento industrial."
         />
         <Card className="bg-card-gradient border-border overflow-hidden">
-          <div className="grid grid-cols-12 px-6 py-4 border-b border-border text-xs uppercase tracking-wider text-muted-foreground">
+          <div className="hidden md:grid grid-cols-12 px-6 py-4 border-b border-border text-xs uppercase tracking-wider text-muted-foreground">
             <div className="col-span-4">Métrica</div>
             <div className="col-span-4">Primera etapa</div>
             <div className="col-span-4">Segunda etapa</div>
@@ -1266,19 +1266,25 @@ function Goals() {
           {rows.map((r, i) => (
             <div
               key={r.k}
-              className={`grid grid-cols-12 px-6 py-5 items-center gap-2 ${i < rows.length - 1 ? "border-b border-border" : ""}`}
+              className={`px-4 sm:px-6 py-5 ${i < rows.length - 1 ? "border-b border-border" : ""} md:grid md:grid-cols-12 md:items-center md:gap-2`}
             >
-              <div className="col-span-4 flex items-center gap-3">
+              <div className="md:col-span-4 flex items-center gap-3 mb-3 md:mb-0">
                 <span className="w-9 h-9 rounded-lg bg-secondary text-primary grid place-items-center shrink-0">
                   <r.i className="w-4 h-4" />
                 </span>
-                <div className="font-medium text-sm">{r.k}</div>
+                <div className="font-medium text-sm min-w-0 break-words">{r.k}</div>
               </div>
-              <div className="col-span-4">
+              <div className="md:col-span-4">
+                <div className="text-[10px] uppercase tracking-wider text-muted-foreground md:hidden">
+                  Primera etapa
+                </div>
                 <div className="font-semibold">{r.a.v}</div>
                 {r.a.s && <div className="text-xs text-muted-foreground mt-0.5">{r.a.s}</div>}
               </div>
-              <div className="col-span-4">
+              <div className="md:col-span-4 mt-2 md:mt-0">
+                <div className="text-[10px] uppercase tracking-wider text-muted-foreground md:hidden">
+                  Segunda etapa
+                </div>
                 <div className="font-semibold text-primary">{r.b.v}</div>
                 {r.b.s && <div className="text-xs text-muted-foreground mt-0.5">{r.b.s}</div>}
               </div>
