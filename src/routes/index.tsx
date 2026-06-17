@@ -103,6 +103,7 @@ function Index() {
       <Architecture />
       <AppSection />
       <Expansion />
+      <OperationsGallery />
       <Carbon />
       <Goals />
       <Vision />
