@@ -39,6 +39,9 @@ import {
   Trash2,
   Mountain,
   TrendingUp,
+  Menu,
+  X,
+  Camera,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -56,7 +59,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "STA\\CUT: ecosistema urbano para procesamiento integral de residuos, app ciudadana y comercio de carbono en Europa.",
+          "STA\\CUT: ecosistema urbano para procesamiento integral de residuos, app ciudadana y comercio de carbono — llave en mano para municipios de Latinoamérica.",
       },
       { property: "og:title", content: "STA · Reciclaje Urbano Inteligente" },
       {
