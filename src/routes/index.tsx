@@ -9,7 +9,7 @@ import {
   BarChart3,
   Globe2,
   Coins,
-  ArrowRight,
+  
   Building2,
   Truck,
   Cpu,
@@ -43,7 +43,7 @@ import {
   X,
   Camera,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
+
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
@@ -135,12 +135,6 @@ function Nav() {
           ))}
         </nav>
         <div className="flex items-center gap-2">
-          <Button
-            size="sm"
-            className="hidden sm:inline-flex bg-gradient-primary text-primary-foreground hover:opacity-90 border-0"
-          >
-            Descargar App <ArrowRight className="w-3.5 h-3.5 ml-1" />
-          </Button>
           <button
             type="button"
             aria-label={open ? "Cerrar menú" : "Abrir menú"}
@@ -164,13 +158,6 @@ function Nav() {
                 {s.label}
               </a>
             ))}
-            <a
-              href="#top"
-              onClick={() => setOpen(false)}
-              className="col-span-2 mt-2 px-3 py-2.5 text-sm font-medium text-center rounded-md bg-gradient-primary text-primary-foreground sm:hidden"
-            >
-              Descargar App
-            </a>
           </nav>
         </div>
       )}
@@ -209,17 +196,6 @@ function Hero() {
             requeridos del municipio: su ciudad lidera la sostenibilidad continental antes de la
             próxima ola de regulaciones de créditos de carbono.
           </p>
-          <div className="flex flex-wrap gap-3">
-            <Button
-              size="lg"
-              className="bg-gradient-primary text-primary-foreground border-0 hover:opacity-90 shadow-glow"
-            >
-              Explorar la plataforma <ArrowRight className="w-4 h-4 ml-2" />
-            </Button>
-            <Button size="lg" variant="outline" className="border-border bg-card/50">
-              Ver tecnología
-            </Button>
-          </div>
         </motion.div>
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
@@ -584,7 +560,7 @@ function Advantages() {
     },
   ];
   const goals = [
-    { v: "−5%", l: "Tratamiento de residuos por parte del gobierno" },
+    
     { v: "−55%", l: "Tasa de contaminación de agua y suelo" },
     { v: "+50", l: "Empleos directos generados" },
     { v: "100+", l: "Aportes fiscales por operación" },
@@ -1186,10 +1162,6 @@ function OperationsGallery() {
                 loading="lazy"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-80" />
-              <figcaption className="absolute bottom-0 left-0 right-0 p-4 text-xs sm:text-sm font-medium text-foreground">
-                {img.caption}
-              </figcaption>
             </motion.figure>
           ))}
         </div>
@@ -1443,17 +1415,6 @@ function Vision() {
           líderes continentales del comercio de créditos de carbono — todo bajo inversión 100%
           privada de nuestro grupo.
         </p>
-        <div className="flex flex-wrap justify-center gap-3">
-          <Button
-            size="lg"
-            className="bg-gradient-primary text-primary-foreground border-0 hover:opacity-90 shadow-glow"
-          >
-            Unirse a la red <ArrowRight className="w-4 h-4 ml-2" />
-          </Button>
-          <Button size="lg" variant="outline" className="border-border">
-            Contactar al equipo
-          </Button>
-        </div>
       </div>
     </section>
   );
