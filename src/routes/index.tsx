@@ -9,7 +9,6 @@ import {
   BarChart3,
   Globe2,
   Coins,
-  
   Building2,
   Truck,
   Cpu,
@@ -191,10 +190,13 @@ function Hero() {
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-8">
             STA\CUT trae a Latinoamérica una solución llave en mano —planta, app, recolección
-            domiciliaria y recompensas— <span className="text-foreground font-medium">100% financiada
-            por nuestro grupo privado</span>. Cero presupuesto, cero planificación y cero expertise
-            requeridos del municipio: su ciudad lidera la sostenibilidad continental antes de la
-            próxima ola de regulaciones de créditos de carbono.
+            domiciliaria y recompensas—{" "}
+            <span className="text-foreground font-medium">
+              100% financiada por nuestro grupo privado
+            </span>
+            . Cero presupuesto, cero planificación y cero expertise requeridos del municipio: su
+            ciudad lidera la sostenibilidad continental antes de la próxima ola de regulaciones de
+            créditos de carbono.
           </p>
         </motion.div>
         <motion.div
@@ -560,7 +562,6 @@ function Advantages() {
     },
   ];
   const goals = [
-    
     { v: "−55%", l: "Tasa de contaminación de agua y suelo" },
     { v: "+50", l: "Empleos directos generados" },
     { v: "100+", l: "Aportes fiscales por operación" },
@@ -1048,10 +1049,10 @@ function Expansion() {
             <p className="text-muted-foreground mb-6">
               Las cifras provienen de operaciones europeas reales: más del{" "}
               <span className="text-foreground font-semibold">45%</span> de territorio difícil
-              cubierto y un <span className="text-foreground font-semibold">20% de crecimiento
-              anual</span> de residuos gestionados. Esta misma red logística y digital —ya
-              auditada— es la que desplegamos en municipios latinoamericanos, sin costo para el
-              gobierno local.
+              cubierto y un{" "}
+              <span className="text-foreground font-semibold">20% de crecimiento anual</span> de
+              residuos gestionados. Esta misma red logística y digital —ya auditada— es la que
+              desplegamos en municipios latinoamericanos, sin costo para el gobierno local.
             </p>
             <div className="grid grid-cols-3 gap-3 sm:gap-4">
               {[
@@ -1072,57 +1073,24 @@ function Expansion() {
   );
 }
 
-const galleryImages = [
-  {
-    src: "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&w=1200&q=80",
-    alt: "Planta de clasificación de residuos",
-    caption: "Línea de clasificación · Polonia",
-    span: "md:col-span-2 md:row-span-2",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1611284446314-60a58ac0deb9?auto=format&fit=crop&w=900&q=80",
-    alt: "Operario en planta de reciclaje",
-    caption: "Equipo operativo",
-    span: "",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1604187350787-bd9b78b94c79?auto=format&fit=crop&w=900&q=80",
-    alt: "Pacas de material reciclado",
-    caption: "Material valorizado",
-    span: "",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1612965110667-4175024b0dcc?auto=format&fit=crop&w=900&q=80",
-    alt: "Camión de recolección urbana",
-    caption: "Logística de recolección · Sarajevo",
-    span: "md:col-span-2",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=900&q=80",
-    alt: "Contenedores urbanos de reciclaje",
-    caption: "Puntos de recolección · Cracovia",
-    span: "",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&w=900&q=80",
-    alt: "Detalle de planta",
-    caption: "Procesamiento · Montenegro",
-    span: "",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=1400&q=80",
-    alt: "Vista aérea ciudad sostenible",
-    caption: "Ciudades atendidas en Europa",
-    span: "md:col-span-2",
-  },
-];
+const factoryImageModules = import.meta.glob("../assets/factory/*.{jpg,png}", {
+  eager: true,
+  query: "?url",
+  import: "default",
+}) as Record<string, string>;
+
+const galleryImages = Object.entries(factoryImageModules)
+  .sort(([a], [b]) => a.localeCompare(b))
+  .map(([path, src], index) => ({
+    src,
+    alt: `Planta operativa ${index + 1}`,
+    caption: index === 0 ? "Planta operativa · vista principal" : `Planta operativa ${index + 1}`,
+    span: index === 0 ? "md:col-span-2 md:row-span-2" : index % 8 === 0 ? "md:col-span-2" : "",
+  }));
 
 function OperationsGallery() {
   return (
-    <section
-      id="galeria"
-      className="relative py-28 px-4 sm:px-6 overflow-hidden bg-background"
-    >
+    <section id="galeria" className="relative py-28 px-4 sm:px-6 overflow-hidden bg-background">
       <div className="absolute -top-32 right-0 w-[28rem] h-[28rem] rounded-full bg-primary/10 blur-3xl pointer-events-none" />
       <div className="relative max-w-7xl mx-auto">
         <motion.div
@@ -1136,8 +1104,7 @@ function OperationsGallery() {
             <Camera className="w-3.5 h-3.5 mr-1.5" /> Galería operativa
           </Badge>
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Nuestras plantas en{" "}
-            <span className="text-gradient">operación hoy</span>.
+            Nuestras plantas en <span className="text-gradient">operación hoy</span>.
           </h2>
           <p className="text-lg text-muted-foreground">
             Imágenes reales de la red europea que mueve toneladas a diario. Esta capacidad —equipos,
