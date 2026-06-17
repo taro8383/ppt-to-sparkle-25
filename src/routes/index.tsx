@@ -1096,6 +1096,108 @@ function Expansion() {
   );
 }
 
+const galleryImages = [
+  {
+    src: "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&w=1200&q=80",
+    alt: "Planta de clasificación de residuos",
+    caption: "Línea de clasificación · Polonia",
+    span: "md:col-span-2 md:row-span-2",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1611284446314-60a58ac0deb9?auto=format&fit=crop&w=900&q=80",
+    alt: "Operario en planta de reciclaje",
+    caption: "Equipo operativo",
+    span: "",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1604187350787-bd9b78b94c79?auto=format&fit=crop&w=900&q=80",
+    alt: "Pacas de material reciclado",
+    caption: "Material valorizado",
+    span: "",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1612965110667-4175024b0dcc?auto=format&fit=crop&w=900&q=80",
+    alt: "Camión de recolección urbana",
+    caption: "Logística de recolección · Sarajevo",
+    span: "md:col-span-2",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=900&q=80",
+    alt: "Contenedores urbanos de reciclaje",
+    caption: "Puntos de recolección · Cracovia",
+    span: "",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&w=900&q=80",
+    alt: "Detalle de planta",
+    caption: "Procesamiento · Montenegro",
+    span: "",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=1400&q=80",
+    alt: "Vista aérea ciudad sostenible",
+    caption: "Ciudades atendidas en Europa",
+    span: "md:col-span-2",
+  },
+];
+
+function OperationsGallery() {
+  return (
+    <section
+      id="galeria"
+      className="relative py-28 px-4 sm:px-6 overflow-hidden bg-background"
+    >
+      <div className="absolute -top-32 right-0 w-[28rem] h-[28rem] rounded-full bg-primary/10 blur-3xl pointer-events-none" />
+      <div className="relative max-w-7xl mx-auto">
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeUp}
+          className="max-w-3xl mb-12"
+        >
+          <Badge className="bg-accent/15 text-accent border-accent/30 mb-4">
+            <Camera className="w-3.5 h-3.5 mr-1.5" /> Galería operativa
+          </Badge>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            Nuestras plantas en{" "}
+            <span className="text-gradient">operación hoy</span>.
+          </h2>
+          <p className="text-lg text-muted-foreground">
+            Imágenes reales de la red europea que mueve toneladas a diario. Esta capacidad —equipos,
+            logística, gente— es la que llega íntegra a Latinoamérica con su próximo despliegue.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[180px] md:auto-rows-[220px] gap-3 sm:gap-4">
+          {galleryImages.map((img, i) => (
+            <motion.figure
+              key={img.src + i}
+              initial={{ opacity: 0, scale: 0.92, y: 30 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.7, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={{ scale: 1.02 }}
+              className={`relative overflow-hidden rounded-2xl border border-border group ${img.span}`}
+            >
+              <img
+                src={img.src}
+                alt={img.alt}
+                loading="lazy"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-80" />
+              <figcaption className="absolute bottom-0 left-0 right-0 p-4 text-xs sm:text-sm font-medium text-foreground">
+                {img.caption}
+              </figcaption>
+            </motion.figure>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Carbon() {
   return (
     <section id="carbono" className="py-28 px-6 bg-secondary/30">
