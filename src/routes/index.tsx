@@ -112,16 +112,17 @@ function Index() {
 }
 
 function Nav() {
+  const [open, setOpen] = useState(false);
   return (
-    <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-xl bg-background/60 border-b border-border">
-      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        <a href="#top" className="flex items-center gap-2 font-bold text-lg">
+    <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-xl bg-background/70 border-b border-border">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
+        <a href="#top" className="flex items-center gap-2 font-bold text-base sm:text-lg shrink-0">
           <span className="w-8 h-8 rounded-lg bg-gradient-primary grid place-items-center text-primary-foreground">
             <Recycle className="w-4 h-4" />
           </span>
           STA<span className="text-muted-foreground">\CUT</span>
         </a>
-        <nav className="hidden md:flex items-center gap-1">
+        <nav className="hidden lg:flex items-center gap-1">
           {sections.map((s) => (
             <a
               key={s.id}
@@ -132,13 +133,46 @@ function Nav() {
             </a>
           ))}
         </nav>
-        <Button
-          size="sm"
-          className="bg-gradient-primary text-primary-foreground hover:opacity-90 border-0"
-        >
-          Descargar App <ArrowRight className="w-3.5 h-3.5 ml-1" />
-        </Button>
+        <div className="flex items-center gap-2">
+          <Button
+            size="sm"
+            className="hidden sm:inline-flex bg-gradient-primary text-primary-foreground hover:opacity-90 border-0"
+          >
+            Descargar App <ArrowRight className="w-3.5 h-3.5 ml-1" />
+          </Button>
+          <button
+            type="button"
+            aria-label={open ? "Cerrar menú" : "Abrir menú"}
+            onClick={() => setOpen((v) => !v)}
+            className="lg:hidden w-10 h-10 grid place-items-center rounded-md border border-border bg-card/60 text-foreground"
+          >
+            {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+        </div>
       </div>
+      {open && (
+        <div className="lg:hidden border-t border-border bg-background/95 backdrop-blur-xl max-h-[70vh] overflow-y-auto">
+          <nav className="px-4 py-3 grid grid-cols-2 gap-1">
+            {sections.map((s) => (
+              <a
+                key={s.id}
+                href={`#${s.id}`}
+                onClick={() => setOpen(false)}
+                className="px-3 py-2.5 text-sm text-muted-foreground hover:text-foreground rounded-md hover:bg-secondary transition"
+              >
+                {s.label}
+              </a>
+            ))}
+            <a
+              href="#top"
+              onClick={() => setOpen(false)}
+              className="col-span-2 mt-2 px-3 py-2.5 text-sm font-medium text-center rounded-md bg-gradient-primary text-primary-foreground sm:hidden"
+            >
+              Descargar App
+            </a>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }
