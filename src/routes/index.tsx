@@ -39,6 +39,9 @@ import {
   Trash2,
   Mountain,
   TrendingUp,
+  Menu,
+  X,
+  Camera,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -56,7 +59,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "STA\\CUT: ecosistema urbano para procesamiento integral de residuos, app ciudadana y comercio de carbono en Europa.",
+          "STA\\CUT: ecosistema urbano para procesamiento integral de residuos, app ciudadana y comercio de carbono — llave en mano para municipios de Latinoamérica.",
       },
       { property: "og:title", content: "STA · Reciclaje Urbano Inteligente" },
       {
@@ -100,6 +103,7 @@ function Index() {
       <Architecture />
       <AppSection />
       <Expansion />
+      <OperationsGallery />
       <Carbon />
       <Goals />
       <Vision />
@@ -109,16 +113,17 @@ function Index() {
 }
 
 function Nav() {
+  const [open, setOpen] = useState(false);
   return (
-    <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-xl bg-background/60 border-b border-border">
-      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        <a href="#top" className="flex items-center gap-2 font-bold text-lg">
+    <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-xl bg-background/70 border-b border-border">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
+        <a href="#top" className="flex items-center gap-2 font-bold text-base sm:text-lg shrink-0">
           <span className="w-8 h-8 rounded-lg bg-gradient-primary grid place-items-center text-primary-foreground">
             <Recycle className="w-4 h-4" />
           </span>
           STA<span className="text-muted-foreground">\CUT</span>
         </a>
-        <nav className="hidden md:flex items-center gap-1">
+        <nav className="hidden lg:flex items-center gap-1">
           {sections.map((s) => (
             <a
               key={s.id}
@@ -129,13 +134,46 @@ function Nav() {
             </a>
           ))}
         </nav>
-        <Button
-          size="sm"
-          className="bg-gradient-primary text-primary-foreground hover:opacity-90 border-0"
-        >
-          Descargar App <ArrowRight className="w-3.5 h-3.5 ml-1" />
-        </Button>
+        <div className="flex items-center gap-2">
+          <Button
+            size="sm"
+            className="hidden sm:inline-flex bg-gradient-primary text-primary-foreground hover:opacity-90 border-0"
+          >
+            Descargar App <ArrowRight className="w-3.5 h-3.5 ml-1" />
+          </Button>
+          <button
+            type="button"
+            aria-label={open ? "Cerrar menú" : "Abrir menú"}
+            onClick={() => setOpen((v) => !v)}
+            className="lg:hidden w-10 h-10 grid place-items-center rounded-md border border-border bg-card/60 text-foreground"
+          >
+            {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+        </div>
       </div>
+      {open && (
+        <div className="lg:hidden border-t border-border bg-background/95 backdrop-blur-xl max-h-[70vh] overflow-y-auto">
+          <nav className="px-4 py-3 grid grid-cols-2 gap-1">
+            {sections.map((s) => (
+              <a
+                key={s.id}
+                href={`#${s.id}`}
+                onClick={() => setOpen(false)}
+                className="px-3 py-2.5 text-sm text-muted-foreground hover:text-foreground rounded-md hover:bg-secondary transition"
+              >
+                {s.label}
+              </a>
+            ))}
+            <a
+              href="#top"
+              onClick={() => setOpen(false)}
+              className="col-span-2 mt-2 px-3 py-2.5 text-sm font-medium text-center rounded-md bg-gradient-primary text-primary-foreground sm:hidden"
+            >
+              Descargar App
+            </a>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }
@@ -154,20 +192,22 @@ function Hero() {
         <div className="absolute inset-0 bg-hero opacity-90" />
         <div className="absolute inset-0 grain" />
       </div>
-      <div className="relative max-w-7xl mx-auto px-6 py-24 grid lg:grid-cols-12 gap-10 items-center">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-20 sm:py-24 grid lg:grid-cols-12 gap-10 items-center">
         <motion.div initial="hidden" animate="show" variants={fadeUp} className="lg:col-span-8">
           <Badge className="bg-secondary text-primary border-primary/30 mb-6">
             <Sparkles className="w-3 h-3 mr-1.5" /> Ecosistema urbano · desde 2016
           </Badge>
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.95] mb-6">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.02] sm:leading-[0.95] mb-6 break-words">
             Reciclaje urbano,
             <br />
             <span className="text-gradient">reinventado.</span>
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-8">
-            STA\CUT integra recolección, clasificación y valorización de residuos urbanos, una app
-            ciudadana de un solo clic y un centro de comercio de carbono para construir el
-            ecosistema urbano sostenible de Europa.
+            STA\CUT trae a Latinoamérica una solución llave en mano —planta, app, recolección
+            domiciliaria y recompensas— <span className="text-foreground font-medium">100% financiada
+            por nuestro grupo privado</span>. Cero presupuesto, cero planificación y cero expertise
+            requeridos del municipio: su ciudad lidera la sostenibilidad continental antes de la
+            próxima ola de regulaciones de créditos de carbono.
           </p>
           <div className="flex flex-wrap gap-3">
             <Button
@@ -440,7 +480,7 @@ function Profile() {
         <SectionHeader
           kicker="Perfil de la empresa"
           title="Una década reinventando los recursos urbanos."
-          desc="Fundada en 2016, STA\CUT opera plantas de tratamiento en Polonia, Bosnia y Herzegovina y Montenegro, con capacidad para valorizar materiales recuperables en circuitos industriales."
+          desc="Fundada en 2016, STA\CUT opera plantas de tratamiento en Polonia, Bosnia y Herzegovina y Montenegro. Esa experiencia europea —probada a escala industrial— es la que ahora desplegamos en Latinoamérica como solución llave en mano para su municipio."
         />
         <div className="grid md:grid-cols-3 gap-6">
           {[
@@ -993,12 +1033,12 @@ function Expansion() {
     { name: "Cracovia", country: "Polonia", phase: "Fase 2" },
   ];
   return (
-    <section id="expansion" className="py-28 px-6">
+    <section id="expansion" className="py-28 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
         <SectionHeader
-          kicker="Plan de expansión"
-          title="Ciudades piloto para un ecosistema regional."
-          desc="STA selecciona ciudades estratégicas para reducir más del 30% las emisiones de carbono regionales y disminuir la contaminación local."
+          kicker="Casos de éxito europeos"
+          title="Nuestra experiencia en Europa, ahora rumbo a Latinoamérica."
+          desc="Estas implementaciones europeas demuestran la vasta experiencia operativa de nuestro grupo —tonelajes procesados, CO₂ evitado y participación ciudadana verificada— que ahora traemos íntegramente al continente latinoamericano."
         />
         <div className="grid lg:grid-cols-2 gap-10 items-start">
           <div className="space-y-3">
@@ -1026,16 +1066,18 @@ function Expansion() {
               </motion.div>
             ))}
           </div>
-          <Card className="bg-card-gradient border-border p-10">
+          <Card className="bg-card-gradient border-border p-8 lg:p-10">
             <Target className="w-8 h-8 text-accent mb-4" />
-            <h3 className="text-2xl font-bold mb-4">El reto europeo</h3>
+            <h3 className="text-2xl font-bold mb-4">De Europa a Latinoamérica</h3>
             <p className="text-muted-foreground mb-6">
-              Más del <span className="text-foreground font-semibold">45%</span> del territorio
-              europeo es montañoso o accidentado, y los residuos urbanos y electrónicos crecen un{" "}
-              <span className="text-foreground font-semibold">20% cada año</span>. STA ofrece la red
-              logística y digital para revertirlo.
+              Las cifras provienen de operaciones europeas reales: más del{" "}
+              <span className="text-foreground font-semibold">45%</span> de territorio difícil
+              cubierto y un <span className="text-foreground font-semibold">20% de crecimiento
+              anual</span> de residuos gestionados. Esta misma red logística y digital —ya
+              auditada— es la que desplegamos en municipios latinoamericanos, sin costo para el
+              gobierno local.
             </p>
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-3 gap-3 sm:gap-4">
               {[
                 { v: "30%", l: "Reducción CO₂ regional" },
                 { v: "45%", l: "Territorio difícil cubierto" },
@@ -1048,6 +1090,108 @@ function Expansion() {
               ))}
             </div>
           </Card>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const galleryImages = [
+  {
+    src: "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&w=1200&q=80",
+    alt: "Planta de clasificación de residuos",
+    caption: "Línea de clasificación · Polonia",
+    span: "md:col-span-2 md:row-span-2",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1611284446314-60a58ac0deb9?auto=format&fit=crop&w=900&q=80",
+    alt: "Operario en planta de reciclaje",
+    caption: "Equipo operativo",
+    span: "",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1604187350787-bd9b78b94c79?auto=format&fit=crop&w=900&q=80",
+    alt: "Pacas de material reciclado",
+    caption: "Material valorizado",
+    span: "",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1612965110667-4175024b0dcc?auto=format&fit=crop&w=900&q=80",
+    alt: "Camión de recolección urbana",
+    caption: "Logística de recolección · Sarajevo",
+    span: "md:col-span-2",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=900&q=80",
+    alt: "Contenedores urbanos de reciclaje",
+    caption: "Puntos de recolección · Cracovia",
+    span: "",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&w=900&q=80",
+    alt: "Detalle de planta",
+    caption: "Procesamiento · Montenegro",
+    span: "",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=1400&q=80",
+    alt: "Vista aérea ciudad sostenible",
+    caption: "Ciudades atendidas en Europa",
+    span: "md:col-span-2",
+  },
+];
+
+function OperationsGallery() {
+  return (
+    <section
+      id="galeria"
+      className="relative py-28 px-4 sm:px-6 overflow-hidden bg-background"
+    >
+      <div className="absolute -top-32 right-0 w-[28rem] h-[28rem] rounded-full bg-primary/10 blur-3xl pointer-events-none" />
+      <div className="relative max-w-7xl mx-auto">
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeUp}
+          className="max-w-3xl mb-12"
+        >
+          <Badge className="bg-accent/15 text-accent border-accent/30 mb-4">
+            <Camera className="w-3.5 h-3.5 mr-1.5" /> Galería operativa
+          </Badge>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            Nuestras plantas en{" "}
+            <span className="text-gradient">operación hoy</span>.
+          </h2>
+          <p className="text-lg text-muted-foreground">
+            Imágenes reales de la red europea que mueve toneladas a diario. Esta capacidad —equipos,
+            logística, gente— es la que llega íntegra a Latinoamérica con su próximo despliegue.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[180px] md:auto-rows-[220px] gap-3 sm:gap-4">
+          {galleryImages.map((img, i) => (
+            <motion.figure
+              key={img.src + i}
+              initial={{ opacity: 0, scale: 0.92, y: 30 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.7, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={{ scale: 1.02 }}
+              className={`relative overflow-hidden rounded-2xl border border-border group ${img.span}`}
+            >
+              <img
+                src={img.src}
+                alt={img.alt}
+                loading="lazy"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-80" />
+              <figcaption className="absolute bottom-0 left-0 right-0 p-4 text-xs sm:text-sm font-medium text-foreground">
+                {img.caption}
+              </figcaption>
+            </motion.figure>
+          ))}
         </div>
       </div>
     </section>
@@ -1209,7 +1353,7 @@ function Goals() {
     },
   ];
   return (
-    <section id="datos" className="py-28 px-6">
+    <section id="datos" className="py-28 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
         <SectionHeader
           kicker="Datos operativos"
@@ -1217,7 +1361,7 @@ function Goals() {
           desc="Objetivos de datos operativos para el tratamiento integral de residuos de STA, organizados en una primera etapa de validación de mercado y una segunda etapa de escalamiento industrial."
         />
         <Card className="bg-card-gradient border-border overflow-hidden">
-          <div className="grid grid-cols-12 px-6 py-4 border-b border-border text-xs uppercase tracking-wider text-muted-foreground">
+          <div className="hidden md:grid grid-cols-12 px-6 py-4 border-b border-border text-xs uppercase tracking-wider text-muted-foreground">
             <div className="col-span-4">Métrica</div>
             <div className="col-span-4">Primera etapa</div>
             <div className="col-span-4">Segunda etapa</div>
@@ -1225,19 +1369,25 @@ function Goals() {
           {rows.map((r, i) => (
             <div
               key={r.k}
-              className={`grid grid-cols-12 px-6 py-5 items-center gap-2 ${i < rows.length - 1 ? "border-b border-border" : ""}`}
+              className={`px-4 sm:px-6 py-5 ${i < rows.length - 1 ? "border-b border-border" : ""} md:grid md:grid-cols-12 md:items-center md:gap-2`}
             >
-              <div className="col-span-4 flex items-center gap-3">
+              <div className="md:col-span-4 flex items-center gap-3 mb-3 md:mb-0">
                 <span className="w-9 h-9 rounded-lg bg-secondary text-primary grid place-items-center shrink-0">
                   <r.i className="w-4 h-4" />
                 </span>
-                <div className="font-medium text-sm">{r.k}</div>
+                <div className="font-medium text-sm min-w-0 break-words">{r.k}</div>
               </div>
-              <div className="col-span-4">
+              <div className="md:col-span-4">
+                <div className="text-[10px] uppercase tracking-wider text-muted-foreground md:hidden">
+                  Primera etapa
+                </div>
                 <div className="font-semibold">{r.a.v}</div>
                 {r.a.s && <div className="text-xs text-muted-foreground mt-0.5">{r.a.s}</div>}
               </div>
-              <div className="col-span-4">
+              <div className="md:col-span-4 mt-2 md:mt-0">
+                <div className="text-[10px] uppercase tracking-wider text-muted-foreground md:hidden">
+                  Segunda etapa
+                </div>
                 <div className="font-semibold text-primary">{r.b.v}</div>
                 {r.b.s && <div className="text-xs text-muted-foreground mt-0.5">{r.b.s}</div>}
               </div>
@@ -1288,9 +1438,10 @@ function Vision() {
           reciclados o valorizados.
         </h2>
         <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-12">
-          En los próximos tres años, STA alcanzará más de un millón de usuarios en Europa, procesará
-          10.000+ toneladas de residuos y normalizará el comercio de emisiones de carbono asociado
-          al reciclaje.
+          En los próximos tres años, STA alcanzará más de un millón de usuarios en Latinoamérica,
+          procesará 10.000+ toneladas de residuos y posicionará a los municipios pioneros como
+          líderes continentales del comercio de créditos de carbono — todo bajo inversión 100%
+          privada de nuestro grupo.
         </p>
         <div className="flex flex-wrap justify-center gap-3">
           <Button
