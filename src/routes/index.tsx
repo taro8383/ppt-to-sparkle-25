@@ -202,9 +202,11 @@ function Hero() {
             <span className="text-gradient">reinventado.</span>
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-8">
-            STA\CUT integra recolección, clasificación y valorización de residuos urbanos, una app
-            ciudadana de un solo clic y un centro de comercio de carbono para construir el
-            ecosistema urbano sostenible de Europa.
+            STA\CUT trae a Latinoamérica una solución llave en mano —planta, app, recolección
+            domiciliaria y recompensas— <span className="text-foreground font-medium">100% financiada
+            por nuestro grupo privado</span>. Cero presupuesto, cero planificación y cero expertise
+            requeridos del municipio: su ciudad lidera la sostenibilidad continental antes de la
+            próxima ola de regulaciones de créditos de carbono.
           </p>
           <div className="flex flex-wrap gap-3">
             <Button
