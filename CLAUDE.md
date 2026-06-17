@@ -15,7 +15,7 @@ npm run build:dev    # Development-mode build
 npm run preview      # Preview built app
 npm run lint         # ESLint over .
 npm run format       # Prettier write over .
-GITHUB_ACTIONS=true BASE_PATH=/ppt-to-sparkle-25/ npm run build  # Static build for GitHub Pages /ppt-to-sparkle-25/
+GITHUB_ACTIONS=true BASE_PATH=/ppt-to-sparkle-25/ npm run build  # Static build for GitHub Pages /docs deployment
 ```
 
 No test runner or test files are currently configured in the repository, so there is no single-test command yet. Use `npm run lint` and `npm run build` for validation until tests are added.
@@ -23,7 +23,7 @@ No test runner or test files are currently configured in the repository, so ther
 ## Architecture
 
 - `vite.config.ts` delegates most setup to `@lovable.dev/vite-tanstack-config`. Do not manually add TanStack Start, React, Tailwind, tsconfig paths, Nitro, component tagger, env injection, alias, or dedupe plugins there; the config comment says duplicates can break the app.
-- GitHub Pages deployment is handled by `.github/workflows/pages.yml`: it prerenders the TanStack Start app into `dist/client/index.html`, uploads that static folder, and deploys with GitHub Pages Actions. Set `GITHUB_ACTIONS=true BASE_PATH=/ppt-to-sparkle-25/` for local GitHub Pages-style builds on Windows/Git Bash.
+- GitHub Pages deployment uses the committed static `docs/` folder. Build into it with `GITHUB_ACTIONS=true BASE_PATH=/ppt-to-sparkle-25/ npm run build`, then copy `dist/client` into `docs`; configure Pages to deploy from the current branch and the `/docs` folder.
 - `src/server.ts` is the SSR entry wrapper. It imports TanStack Start's generated server entry, normalizes catastrophic h3 500 responses, and returns a generic HTML error page for caught SSR failures.
 - `src/start.ts` creates the TanStack Start instance and registers request middleware for server-side error handling.
 - `src/router.tsx` creates the TanStack Router with a per-router `QueryClient` in route context.
