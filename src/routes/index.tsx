@@ -479,7 +479,7 @@ function Profile() {
         <SectionHeader
           kicker="Perfil de la empresa"
           title="Una década reinventando los recursos urbanos."
-          desc="Fundada en 2016, STA\CUT opera plantas de tratamiento en Polonia, Bosnia y Herzegovina y Montenegro, con capacidad para valorizar materiales recuperables en circuitos industriales."
+          desc="Fundada en 2016, STA\CUT opera plantas de tratamiento en Polonia, Bosnia y Herzegovina y Montenegro. Esa experiencia europea —probada a escala industrial— es la que ahora desplegamos en Latinoamérica como solución llave en mano para su municipio."
         />
         <div className="grid md:grid-cols-3 gap-6">
           {[
