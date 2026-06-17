@@ -192,12 +192,12 @@ function Hero() {
         <div className="absolute inset-0 bg-hero opacity-90" />
         <div className="absolute inset-0 grain" />
       </div>
-      <div className="relative max-w-7xl mx-auto px-6 py-24 grid lg:grid-cols-12 gap-10 items-center">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-20 sm:py-24 grid lg:grid-cols-12 gap-10 items-center">
         <motion.div initial="hidden" animate="show" variants={fadeUp} className="lg:col-span-8">
           <Badge className="bg-secondary text-primary border-primary/30 mb-6">
             <Sparkles className="w-3 h-3 mr-1.5" /> Ecosistema urbano · desde 2016
           </Badge>
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.95] mb-6">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.02] sm:leading-[0.95] mb-6 break-words">
             Reciclaje urbano,
             <br />
             <span className="text-gradient">reinventado.</span>
