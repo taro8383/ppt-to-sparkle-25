@@ -1329,9 +1329,10 @@ function Vision() {
           reciclados o valorizados.
         </h2>
         <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-12">
-          En los próximos tres años, STA alcanzará más de un millón de usuarios en Europa, procesará
-          10.000+ toneladas de residuos y normalizará el comercio de emisiones de carbono asociado
-          al reciclaje.
+          En los próximos tres años, STA alcanzará más de un millón de usuarios en Latinoamérica,
+          procesará 10.000+ toneladas de residuos y posicionará a los municipios pioneros como
+          líderes continentales del comercio de créditos de carbono — todo bajo inversión 100%
+          privada de nuestro grupo.
         </p>
         <div className="flex flex-wrap justify-center gap-3">
           <Button
